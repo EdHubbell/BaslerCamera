@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CyotekImageBox" Version="1.3.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="NLog" Version="5.2.4" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Basler.Pylon">
+      <HintPath>SupportFiles\BaslerDLLs\Basler.Pylon.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SupportFiles\BaslerDLLs\Basler.Pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\GCBase_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\GenApi_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\gxapi_v14.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\log4cpp_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\Log_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\MathParser_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\NodeMapData_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\ProducerGEV.cti">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonBase_v7_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonDataProcessingCore_v1_3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonDataProcessingGui_v1_3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonDataProcessing_v1_3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonDataProcessing_v1_3.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonGigE_v7_4_TL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonGUI_v7_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonUtilityPcl_v7_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\PylonUtility_v7_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\BaslerDLLs\XmlParser_MD_VC141_v3_1_Basler_pylon.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SupportFiles\demoImage.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)\SupportFiles\BaslerDLLs&quot; &quot;$(TargetDir)&quot;  /s /e /h /Y&#xD;&#xA;" />
+  </Target>
+</Project>
